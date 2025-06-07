@@ -14,13 +14,28 @@ const Hero = () => {
     setIsLoaded(true);
   }, []);
 
+  // developer image
   const [isClicked, setIsClicked] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const devImage1 = `${devimage}`;
   const devImage2 = `${sasluvid}`;
 
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 768); // Tailwind's md breakpoint
+    };
+
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
+
   const handleImageClick = () => {
-    setIsClicked(!isClicked);
+    if (!isMobile) {
+      setIsClicked(!isClicked);
+    }
   };
 
   return (
@@ -82,7 +97,32 @@ const Hero = () => {
                   className="relative z-10 w-full h-full object-cover backdrop-blur-2xl rounded-full shadow-2xl border-4 border-white/80 transform hover:scale-110 transition-all duration-700 ease-out cursor-pointer group-hover:shadow-[0_0_50px_rgba(255,255,255,0.5)]"
                 /> */}
 
-                {isClicked ? (
+                {/* {isClicked ? (
+                  <video
+                    src={devImage2}
+                    autoPlay
+                    muted
+                    loop
+                    onClick={handleImageClick}
+                    className=" relative z-10 w-full h-full object-cover object-center backdrop-blur-2xl rounded-full shadow-2xl border-4 border-white/80 transform hover:scale-110 transition-all duration-700 ease-out cursor-pointer group-hover:shadow-[0_0_50px_rgba(255,255,255,0.5)]"
+                  />
+                ) : (
+                  <img
+                    src={devImage1}
+                    alt="Developer"
+                    onClick={handleImageClick}
+                    className=" relative z-10 w-full h-full object-cover backdrop-blur-2xl rounded-full shadow-2xl border-4 border-white/80 transform hover:scale-110 transition-all duration-700 ease-out cursor-pointer group-hover:shadow-[0_0_50px_rgba(255,255,255,0.5)] "
+                  />
+                )} */}
+
+                {isMobile || !isClicked ? (
+                  <img
+                    src={devImage1}
+                    alt="Developer"
+                    onClick={handleImageClick}
+                    className="relative z-10 w-full h-full object-cover backdrop-blur-2xl rounded-full shadow-2xl border-4 border-white/80 transform hover:scale-110 transition-all duration-700 ease-out cursor-pointer group-hover:shadow-[0_0_50px_rgba(255,255,255,0.5)]"
+                  />
+                ) : (
                   <video
                     src={devImage2}
                     autoPlay
@@ -90,15 +130,8 @@ const Hero = () => {
                     loop
                     onClick={handleImageClick}
                     className="relative z-10 w-full h-full object-cover object-center backdrop-blur-2xl rounded-full shadow-2xl border-4 border-white/80 transform hover:scale-110 transition-all duration-700 ease-out cursor-pointer group-hover:shadow-[0_0_50px_rgba(255,255,255,0.5)]"
-                  />
-                ) : (
-                  <img
-                    src={devImage1}
-                    alt="Developer"
-                    onClick={handleImageClick}
-                    className="relative z-10 w-full h-full object-cover backdrop-blur-2xl rounded-full shadow-2xl border-4 border-white/80 transform hover:scale-110 transition-all duration-700 ease-out cursor-pointer group-hover:shadow-[0_0_50px_rgba(255,255,255,0.5)] "
-                  />
-                )}
+                  />)}
+
 
 
 
