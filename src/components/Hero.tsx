@@ -17,7 +17,7 @@ const Hero = () => {
   const [isClicked, setIsClicked] = useState(false);
 
   const devImage1 = `${devimage}`;
-  const devImage2 =  `${sasluvid}`;
+  const devImage2 = `${sasluvid}`;
 
   const handleImageClick = () => {
     setIsClicked(!isClicked);
@@ -82,23 +82,23 @@ const Hero = () => {
                   className="relative z-10 w-full h-full object-cover backdrop-blur-2xl rounded-full shadow-2xl border-4 border-white/80 transform hover:scale-110 transition-all duration-700 ease-out cursor-pointer group-hover:shadow-[0_0_50px_rgba(255,255,255,0.5)]"
                 /> */}
 
-                  {isClicked ? (
-                    <video
-                      src={devImage2}
-                      autoPlay
-                      muted
-                      loop
-                      onClick={handleImageClick}
-                  className="relative z-10 w-full h-full object-cover object-center backdrop-blur-2xl rounded-full shadow-2xl border-4 border-white/80 transform hover:scale-110 transition-all duration-700 ease-out cursor-pointer group-hover:shadow-[0_0_50px_rgba(255,255,255,0.5)]"
-                    />
-                  ) : (
-                    <img
-                      src={devImage1}
-                      alt="Developer"
-                      onClick={handleImageClick}
-                  className="relative z-10 w-full h-full object-cover backdrop-blur-2xl rounded-full shadow-2xl border-4 border-white/80 transform hover:scale-110 transition-all duration-700 ease-out cursor-pointer group-hover:shadow-[0_0_50px_rgba(255,255,255,0.5)] "
-                    />
-                  )}
+                {isClicked ? (
+                  <video
+                    src={devImage2}
+                    autoPlay
+                    muted
+                    loop
+                    onClick={handleImageClick}
+                    className="relative z-10 w-full h-full object-cover object-center backdrop-blur-2xl rounded-full shadow-2xl border-4 border-white/80 transform hover:scale-110 transition-all duration-700 ease-out cursor-pointer group-hover:shadow-[0_0_50px_rgba(255,255,255,0.5)]"
+                  />
+                ) : (
+                  <img
+                    src={devImage1}
+                    alt="Developer"
+                    onClick={handleImageClick}
+                    className="relative z-10 w-full h-full object-cover backdrop-blur-2xl rounded-full shadow-2xl border-4 border-white/80 transform hover:scale-110 transition-all duration-700 ease-out cursor-pointer group-hover:shadow-[0_0_50px_rgba(255,255,255,0.5)] "
+                  />
+                )}
 
 
 
